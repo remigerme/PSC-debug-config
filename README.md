@@ -32,11 +32,20 @@ Vous êtes désormais connecté sur votre machine de salle info. Installez les e
 - `Makefile Tools`
 - `Git Extension Pack`
 
-## Configuration de Github / Gitlab (which one ?)
-TODO CHOISIR ENTRE GITHUB ET GITLAB
-TODO PRESENTER LA CONFIG GIT
+## Configuration de Github
+Sur votre machine distante, dans `.ssh`, créez une nouvelle clé (même méthode que précédemment). Ajoutez la clé publique à votre compte Github (`Settings` > `SSH keys` > `Add new SSH key`) puis créez un fichier `config` :
+```
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+```
+
+Enfin, toujours sur votre machine distante, `git config --global --add user.name nom_utilisateur_github` et `git config --global --add user.email email.github@gmail.com`. C'est bon, Github est maintenant prêt à un emploi facile !
 
 ## Utilisation
 Mettre les fichiers `launch.json` et `task.json` dans un dossier `.vscode` à la racine de votre projet.
+
 TODO PRESENTER MAKEFILE
+
 TODO MIEUX : NE PAS GITIGNORE LAUNCH ET TASK ET LES METTRE DANS LE GIT DU PSC
