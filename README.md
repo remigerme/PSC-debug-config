@@ -32,5 +32,11 @@ Vous êtes désormais connecté sur votre machine de salle info. Installez les e
 - `Makefile Tools`
 - `Git Extension Pack`
 
+## Configuration de Github / Gitlab (which one ?)
+TODO CHOISIR ENTRE GITHUB ET GITLAB
+TODO PRESENTER LA CONFIG GIT
+
 ## Utilisation
-To debug C code in VSCode, put the provided `launch.json` and `task.json` in a `.vscode` folder located at the root of your project.
+Mettre les fichiers `launch.json` et `task.json` dans un dossier `.vscode` à la racine de votre projet.
+TODO PRESENTER MAKEFILE
+TODO MIEUX : NE PAS GITIGNORE LAUNCH ET TASK ET LES METTRE DANS LE GIT DU PSC
