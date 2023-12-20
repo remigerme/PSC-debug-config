@@ -8,7 +8,10 @@ Pour nous abstraire des problèmes de la machine de chacun (cette automatisation
 ## Mise en place de la connexion SSH
 Dans votre dossier utilisateur (`C:\Users\VotreNom\` sur Windows, `/Users/VotreNom/` sur macos ou `/home/VotreNom/` sur Linux), créez un dossier `.ssh` s'il n'existe pas déjà.
 
-Ouvrez un terminal et placez-vous dans ce dossier. La commande `ssh-keygen -t rsa -b 4096` permet de générer une clé SSH (des questions vous seront posées, donnez-lui un nom si vous voulez, laissez la passkey vide de préférence).
+Ouvrez un terminal et placez-vous dans ce dossier. La commande ci-dessous permet de générer une clé SSH (des questions vous seront posées, donnez-lui un nom si vous voulez, laissez la passkey vide de préférence).
+```
+ssh-keygen -t rsa -b 4096
+```
 
 Ensuite, choisissez votre machine de salle info préférée ([liste](https://wikix.polytechnique.org/Ordinateurs_des_salles_info)) et connectez-vous y en ssh `ssh prenom.nom@nom_machine.polytechnique.fr` (rentrez votre mot de passe LDAP, il ne s'affiche pas, c'est normal). Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `id_rsa.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
 
@@ -41,7 +44,14 @@ Host github.com
   IdentityFile ~/.ssh/id_rsa
 ```
 
-Enfin, toujours sur votre machine distante, `git config --global --add user.name nom_utilisateur_github` et `git config --global --add user.email email.github@gmail.com`. C'est bon, Github est maintenant prêt à un emploi facile !
+Enfin, toujours sur votre machine distante :
+```
+git config --global --add user.name nom_utilisateur_github
+```
+```
+git config --global --add user.email email.github@gmail.com
+```
+C'est bon, Github est maintenant prêt à un emploi facile !
 
 ## Utilisation
 Mettre les fichiers `launch.json` et `task.json` dans un dossier `.vscode` à la racine de votre projet.
