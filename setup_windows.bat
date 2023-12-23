@@ -15,11 +15,11 @@ if "%key_name%"=="" set "key_name=key_psc"
 ssh-keygen -t rsa -b 4096 -N "" -f "%key_name%" -q
 
 set /p "username=Nom d'utilisateur (prenom.nom) : "
-echo >> %ssh_dir%\config
-echo Host x >> %ssh_dir%\config
-echo   HostName %host%.polytechnique.fr >> %ssh_dir%\config
-echo   User %username% >> %ssh_dir%\config
-echo   IdentityFile %ssh_dir%\%key_name% >> %ssh_dir%\config
+echo.>> %ssh_dir%\config
+echo Host x>> %ssh_dir%\config
+echo   HostName %host%.polytechnique.fr>> %ssh_dir%\config
+echo   User %username%>> %ssh_dir%\config
+echo   IdentityFile %ssh_dir%\%key_name%>> %ssh_dir%\config
 echo Fichier config modifie
 endlocal
 
