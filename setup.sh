@@ -26,7 +26,7 @@ Host x
   IdentityFile ~/.ssh/$key_name
 "
 
-echo "$content" >> ~/.ssh/config_test
+echo "$content" >> ~/.ssh/config
 echo "Fichier config modifié"
 
 read -sp "Mot de passe LDAP X : " password

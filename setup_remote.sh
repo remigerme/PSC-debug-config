@@ -20,7 +20,7 @@ Host github.com
   IdentityFile ~/.ssh/$key_name
 "
 
-echo "$content" >> ~/.ssh/config_test
+echo "$content" >> ~/.ssh/config
 echo "Fichier config modifié"
 
 read -p "Github username : " gh_user
