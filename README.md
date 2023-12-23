@@ -13,31 +13,19 @@ Dans le dossier de `setup.sh` :
 ```
 chmod +x setup.sh && ./setup.sh
 ```
-C'est fini (sah quel plaisir les vrais OS) ! Vous devriez maintenant pouvoir vous connecter à votre machine de salle info en tapant simplement `ssh x`.
+C'est fini (sah quel plaisir les vrais OS) !
 
 ### Pour Windows
-Les emmerdes commencent.
+Les emmerdes commencent (pour moi).
 
-Dans votre dossier utilisateur (`C:\Users\VotreNom\`), créez un dossier `.ssh` s'il n'existe pas déjà (attention, par défaut l'explorateur de fichiers n'affiche pas les dossiers cachés (ceux qui commencent par un `.`)).
-
-Ouvrez un terminal et placez-vous dans ce dossier. La commande ci-dessous permet de générer une clé SSH.
+Dans le dossier de `setup_windows.bat` :
 ```
-ssh-keygen -t rsa -b 4096 -N "" -f "key_psc"
+.\setup_windows.bat
 ```
 
-Connectez-vous en ssh à une machine de salle info (rentrez votre mot de passe LDAP, il ne s'affiche pas, c'est normal):
-```
-ssh prenom.nom@oncidium.polytechnique.fr
-```
-Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `id_rsa.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
+Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `key_psc.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
 
-De retour sur votre ordi perso, dans `.ssh`, créez un fichier `config` suivant (en remplaçant `key_psc` par le fichier contenant votre clé privée) :
-```
-Host x
-  HostName oncidium.polytechnique.fr
-  User prenom.nom
-  IdentityFile C:\Users\VotreNom\.ssh\key_psc
-```
+*** 
 
 Vous devriez maintenant pouvoir vous connecter à votre machine de salle info en tapant simplement `ssh x`.
 
