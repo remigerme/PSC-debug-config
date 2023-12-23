@@ -9,11 +9,10 @@ cd /d "%ssh_dir%"
 set /p "host=Nom de votre machine de salle info (laisser vide pour 'oncidium') : "
 if "%host%"=="" set "host=oncidium"
 
-set /p "key_name=Nom de la clé (laisser vide pour 'key_psc') : "
+set /p "key_name=Nom de la cle (laisser vide pour 'key_psc') : "
 if "%key_name%"=="" set "key_name=key_psc"
 
 ssh-keygen -t rsa -b 4096 -N "" -f "%key_name%" -q
-echo Clé créée : %ssh_dir%\%key_name%
 
 set /p "username=Nom d'utilisateur (prenom.nom) : "
 set "content=Host x
@@ -23,7 +22,7 @@ set "content=Host x
 "
 
 echo %content% >> %ssh_dir%\config
-echo Fichier config modifié
+echo Fichier config modifie
 
 set /p "password=Mot de passe LDAP X : "
 echo.
@@ -32,7 +31,7 @@ if %errorlevel% neq 0 (
     echo PuTTY is not installed or not in the system PATH.
 ) else (
     "%ProgramFiles%\PuTTY\plink" -ssh -l %username% -pw %password% %host%.polytechnique.fr "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys" < %ssh_dir%\%key_name%.pub
-    echo Clé ajoutée sur le serveur
+    echo Cle ajoutee sur le serveur
 
     scp setup_remote.sh x:~
     
