@@ -15,13 +15,16 @@ if "%key_name%"=="" set "key_name=key_psc"
 ssh-keygen -t rsa -b 4096 -N "" -f "%key_name%" -q
 
 set /p "username=Nom d'utilisateur (prenom.nom) : "
-set "content=Host x
-  HostName %host%.polytechnique.fr
-  User %username%
-  IdentityFile %ssh_dir%\%key_name%
-"
-
-echo %content% >> %ssh_dir%\config
+setlocal EnableDelayedExpansion
+set "content="
+echo Host x >> temp
+echo "  HostName %host%.polytechnique.fr" >> temp
+echo "  User %username%" >> temp
+echo "  IdentityFile %ssh_dir%\%key_name%" >> temp
+set /p content=<temp
+del temp
+echo !content! >> %ssh_dir%\config
+endlocal
 echo Fichier config modifie
 
 set /p "password=Mot de passe LDAP X : "
