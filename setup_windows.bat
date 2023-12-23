@@ -18,14 +18,16 @@ set /p "username=Nom d'utilisateur (prenom.nom) : "
 setlocal EnableDelayedExpansion
 set "content="
 echo Host x >> temp
-echo "  HostName %host%.polytechnique.fr" >> temp
-echo "  User %username%" >> temp
-echo "  IdentityFile %ssh_dir%\%key_name%" >> temp
-set /p content=<temp
+echo   HostName %host%.polytechnique.fr >> temp
+echo   User %username% >> temp
+echo   IdentityFile %ssh_dir%\%key_name% >> temp
+for /F "usebackq delims=" %%A in ("temp") do (
+    set "content=!content!%%A\n"
+)
 del temp
 echo !content! >> %ssh_dir%\config
-endlocal
 echo Fichier config modifie
+endlocal
 
 set /p "password=Mot de passe LDAP X : "
 echo.
