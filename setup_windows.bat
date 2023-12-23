@@ -23,7 +23,10 @@ echo   IdentityFile %ssh_dir%\%key_name%>> %ssh_dir%\config
 echo Fichier config modifie
 endlocal
 
-set /p "password=Mot de passe LDAP X : "
+set "psCommand=powershell -Command "$pword = read-host 'Enter Password' -AsSecureString ; ^
+    $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword); ^
+        [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)""
+for /f "usebackq delims=" %%p in (`%psCommand%`) do set password=%%p
 echo.
 where plink >nul 2>nul
 if %errorlevel% neq 0 (
