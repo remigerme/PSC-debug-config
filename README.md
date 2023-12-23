@@ -18,23 +18,25 @@ C'est fini (sah quel plaisir les vrais OS) ! Vous devriez maintenant pouvoir vou
 ### Pour Windows
 Les emmerdes commencent.
 
-Dans votre dossier utilisateur (`C:\Users\VotreNom\` sur Windows, `/Users/VotreNom/` sur macos ou `/home/VotreNom/` sur Linux), créez un dossier `.ssh` s'il n'existe pas déjà.
+Dans votre dossier utilisateur (`C:\Users\VotreNom\`), créez un dossier `.ssh` s'il n'existe pas déjà (attention, par défaut l'explorateur de fichiers n'affiche pas les dossiers cachés (ceux qui commencent par un `.`)).
 
-Ouvrez un terminal et placez-vous dans ce dossier. La commande ci-dessous permet de générer une clé SSH (des questions vous seront posées, donnez-lui un nom si vous voulez, laissez la passkey vide de préférence).
+Ouvrez un terminal et placez-vous dans ce dossier. La commande ci-dessous permet de générer une clé SSH.
 ```
-ssh-keygen -t rsa -b 4096
+ssh-keygen -t rsa -b 4096 -N "" -f "key_psc"
 ```
 
-Ensuite, choisissez votre machine de salle info préférée ([liste](https://wikix.polytechnique.org/Ordinateurs_des_salles_info)) et connectez-vous y en ssh `ssh prenom.nom@nom_machine.polytechnique.fr` (rentrez votre mot de passe LDAP, il ne s'affiche pas, c'est normal). Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `id_rsa.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
+Connectez-vous en ssh à une machine de salle info (rentrez votre mot de passe LDAP, il ne s'affiche pas, c'est normal):
+```
+ssh prenom.nom@oncidium.polytechnique.fr
+```
+Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `id_rsa.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
 
-De retour sur votre ordi perso, dans `.ssh`, créez un fichier `config` suivant (en remplaçant `id_rsa` par le fichier contenant votre clé privée) :
+De retour sur votre ordi perso, dans `.ssh`, créez un fichier `config` suivant (en remplaçant `key_psc` par le fichier contenant votre clé privée) :
 ```
 Host x
-  HostName nom_machine.polytechnique.fr
+  HostName oncidium.polytechnique.fr
   User prenom.nom
-  # Décommentez la ligne pertinente (attention à bien aligner le nombre d'espaces)
-  # IdentityFile ~/.ssh/id_rsa # pour Linux et macos
-  # IdentityFile C:\Users\VotreNom\.ssh\id_rsa # pour Windows
+  IdentityFile C:\Users\VotreNom\.ssh\key_psc
 ```
 
 Vous devriez maintenant pouvoir vous connecter à votre machine de salle info en tapant simplement `ssh x`.
