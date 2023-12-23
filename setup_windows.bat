@@ -21,7 +21,6 @@ echo   HostName %host%.polytechnique.fr>> %ssh_dir%\config
 echo   User %username%>> %ssh_dir%\config
 echo   IdentityFile %ssh_dir%\%key_name%>> %ssh_dir%\config
 echo Fichier config modifie
-endlocal
 
 set "psCommand=powershell -Command "$pword = read-host 'Enter Password' -AsSecureString ; ^
     $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword); ^
@@ -32,7 +31,7 @@ where plink >nul 2>nul
 if %errorlevel% neq 0 (
     echo PuTTY is not installed or not in the system PATH.
 ) else (
-    "%ProgramFiles%\PuTTY\plink" -ssh -l %username% -pw %password% %host%.polytechnique.fr "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys" < %ssh_dir%\%key_name%.pub
+    plink -ssh -l %username% -pw %password% %host%.polytechnique.fr "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys" < %ssh_dir%\%key_name%.pub
     echo Cle ajoutee sur le serveur
 
     scp setup_remote.sh x:~
