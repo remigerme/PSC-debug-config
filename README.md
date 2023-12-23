@@ -36,21 +36,12 @@ Vous êtes désormais connecté sur votre machine de salle info. Installez les e
 - `Git Extension Pack`
 
 ## Configuration de Github
-Sur votre machine distante, dans `.ssh`, créez une nouvelle clé (même méthode que précédemment). Ajoutez la clé publique à votre compte Github (`Settings` > `SSH keys` > `Add new SSH key`) puis créez un fichier `config` :
+Sur votre machine distante (dans le dossier où est `setup_remote.sh`) :
 ```
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
+chmod +x setup_remote.sh && ./setup_remote.sh
 ```
+Ajoutez la clé publique à votre compte Github (`Settings` > `SSH keys` > `Add new SSH key`, la copier-coller).
 
-Enfin, toujours sur votre machine distante :
-```
-git config --global --add user.name nom_utilisateur_github
-```
-```
-git config --global --add user.email email.github@gmail.com
-```
 C'est bon, Github est maintenant prêt à un emploi facile !
 
 ## Utilisation
