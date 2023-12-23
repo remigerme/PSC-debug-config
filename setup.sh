@@ -43,4 +43,6 @@ fi
 sshpass -p $password ssh-copy-id -i ~/.ssh/$key_name.pub -o StrictHostKeyChecking=no $username@$host.polytechnique.fr
 echo "Clé ajoutée sur le serveur"
 
+scp setup_remote.sh x:~
+
 echo "Essayez maintenant de vous connecter en tapant 'ssh x'"
