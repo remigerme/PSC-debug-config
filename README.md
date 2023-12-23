@@ -18,12 +18,12 @@ C'est fini (sah quel plaisir les vrais OS) !
 ### Pour Windows
 Les emmerdes commencent (pour moi).
 
+Installez [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) si ce n'est pas déjà fait (essayez de taper `plink` dans l'invite de commande).
+
 Dans le dossier de `setup_windows.bat` :
 ```
 .\setup_windows.bat
 ```
-
-Sur la machine distante, dans `.ssh` (créez le s'il n'existe pas déjà `mkdir .ssh`), créez un fichier `authorized_keys` : `nano authorized_keys`. Dedans, collez l'intégralité de votre clé publique générée précédemment (par défaut `key_psc.pub`) puis quittez en sauvegardant (`ctrl`+`q` puis `y` puis `enter`).
 
 *** 
 
@@ -38,7 +38,7 @@ Vous êtes désormais connecté sur votre machine de salle info. Installez les e
 - `Git Extension Pack`
 
 ## Configuration de Github
-Sur votre machine distante (dans le dossier où est `setup_remote.sh`) :
+Sur votre machine distante (dans le dossier où est `setup_remote.sh` - le setup du ssh envoie le fichier sur la machine dans votre home directory) :
 ```
 chmod +x setup_remote.sh && ./setup_remote.sh
 ```
