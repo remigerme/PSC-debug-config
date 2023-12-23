@@ -28,4 +28,4 @@ read -p "Github email : " gh_email
 git config --global --add user.name $gh_user
 git config --global --add user.email $gh_email
 echo "Github configuré. Ajoutez votre clé publique sur Github :"
-echo < ~/.ssh/$key_name.pub
+cat ~/.ssh/$key_name.pub
