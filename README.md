@@ -47,8 +47,4 @@ Ajoutez la clé publique à votre compte Github (`Settings` > `SSH keys` > `Add 
 C'est bon, Github est maintenant prêt à un emploi facile !
 
 ## Utilisation
-Mettre les fichiers `launch.json` et `task.json` dans un dossier `.vscode` à la racine de votre projet.
-
-TODO PRESENTER MAKEFILE
-
-TODO MIEUX : NE PAS GITIGNORE LAUNCH ET TASK ET LES METTRE DANS LE GIT DU PSC
+Mettre les fichiers `launch.json` et `task.json` dans un dossier `.vscode` à la racine de votre projet (ne pas les gitignore sur le vrai projet).
